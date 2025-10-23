@@ -113,6 +113,16 @@ public class IKEv2Provider: VPNProvider {
         // Status updates are handled by the VPNManager
     }
 
+    public func getConnection() -> NEVPNConnection? {
+        return vpnManager?.connection
+    }
+
+    public func getDataCount() -> (received: UInt64, sent: UInt64)? {
+        // IKEv2 doesn't expose data count through NetworkExtension API
+        // Would require custom implementation or system-level monitoring
+        return nil
+    }
+
     // MARK: - Private Methods
 
     private func parseStrongSwanTemplate(_ template: String?) throws -> IKEv2Configuration {

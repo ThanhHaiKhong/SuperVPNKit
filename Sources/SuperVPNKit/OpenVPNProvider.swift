@@ -11,6 +11,7 @@ public class OpenVPNProvider: VPNProvider {
     public let protocolType = "OpenVPN"
 
     private var vpnManager: NETunnelProviderManager?
+    private var currentProviderConfiguration: OpenVPN.ProviderConfiguration?
     private let appGroup: String
     private let bundleIdentifier: String
 
@@ -63,6 +64,9 @@ public class OpenVPNProvider: VPNProvider {
         modifiedProviderConfig.masksPrivateData = false
         modifiedProviderConfig.username = config.username
 
+        // Store provider configuration for data counting
+        self.currentProviderConfiguration = modifiedProviderConfig
+
         // Store password in keychain (account = username + protocol)
         let keychain = Keychain(group: appGroup)
         let keychainAccount = "\(config.username)-OPENVPN"
@@ -110,6 +114,18 @@ public class OpenVPNProvider: VPNProvider {
 
     public func updateStatus(_ status: NEVPNStatus) {
         // Status updates are handled by the VPNManager
+    }
+
+    public func getConnection() -> NEVPNConnection? {
+        return vpnManager?.connection
+    }
+
+    public func getDataCount() -> (received: UInt64, sent: UInt64)? {
+        guard let providerConfig = currentProviderConfiguration,
+              let dataCount = providerConfig.dataCount else {
+            return nil
+        }
+        return (UInt64(dataCount.received), UInt64(dataCount.sent))
     }
 
     // MARK: - Private Methods

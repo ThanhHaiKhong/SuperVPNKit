@@ -12,6 +12,17 @@ public protocol VPNProvider {
     func disconnect() async throws
     func updateStatus(_ status: NEVPNStatus)
     func loadConfiguration() async throws
+    func getConnection() -> NEVPNConnection?
+}
+
+// MARK: - VPN Provider Extensions
+
+extension VPNProvider {
+    /// Get current data count (bytes sent/received)
+    /// Default implementation returns nil, override in specific providers
+    public func getDataCount() -> (received: UInt64, sent: UInt64)? {
+        return nil
+    }
 }
 
 // MARK: - VPN Status
