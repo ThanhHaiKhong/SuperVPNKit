@@ -142,43 +142,21 @@ public class OpenVPNProvider: VPNProvider {
         let allKeys = sharedDefaults.dictionaryRepresentation().keys
         VPNLog.debug("📊 [OpenVPNProvider] All keys in shared UserDefaults: \(allKeys)", category: VPNLog.openvpn)
 
-        // First, check if TunnelKit is writing data at all
-        if let tunnelKitDataCount = sharedDefaults.array(forKey: "OpenVPN.DataCount") as? [UInt] {
-            VPNLog.debug("✅ [OpenVPNProvider] TunnelKit IS writing data: \(tunnelKitDataCount)", category: VPNLog.openvpn)
+        // Read directly from TunnelKit's data (bypass our intermediate timer)
+        if let tunnelKitDataCount = sharedDefaults.array(forKey: "OpenVPN.DataCount") as? [UInt],
+           tunnelKitDataCount.count == 2 {
+            let bytesReceived = UInt64(tunnelKitDataCount[0])
+            let bytesSent = UInt64(tunnelKitDataCount[1])
+
+            VPNLog.debug("✅ [OpenVPNProvider] Reading DIRECTLY from TunnelKit: received=\(bytesReceived), sent=\(bytesSent)", category: VPNLog.openvpn)
+
+            // Return data even if zero (to show connection is established)
+            return (received: bytesReceived, sent: bytesSent)
         } else {
             VPNLog.error("❌ [OpenVPNProvider] TunnelKit is NOT writing data to OpenVPN.DataCount", category: VPNLog.openvpn)
-        }
-
-        let bytesReceived = UInt64(sharedDefaults.integer(forKey: "vpn_bytes_received"))
-        let bytesSent = UInt64(sharedDefaults.integer(forKey: "vpn_bytes_sent"))
-
-        // Check if stats were recently updated (within last 10 seconds)
-        let lastUpdate = sharedDefaults.double(forKey: "vpn_stats_updated_at")
-        let now = Date().timeIntervalSince1970
-        let isStale = (now - lastUpdate) > 10
-
-        #if DEBUG
-        VPNLog.debug("📊 [OpenVPNProvider] Read values: received=\(bytesReceived), sent=\(bytesSent)", category: VPNLog.openvpn)
-        VPNLog.debug("📊 [OpenVPNProvider] Last update: \(lastUpdate), now: \(now), stale: \(isStale)", category: VPNLog.openvpn)
-
-        if isStale && (bytesReceived > 0 || bytesSent > 0) {
-            VPNLog.debug("⚠️ [OpenVPNProvider] Stats are stale (last update: \(Int(now - lastUpdate))s ago)", category: VPNLog.openvpn)
-        }
-        #endif
-
-        // Return nil if no data has been recorded
-        guard bytesReceived > 0 || bytesSent > 0 else {
-            #if DEBUG
-            VPNLog.debug("⚠️ [OpenVPNProvider] No data recorded, returning nil", category: VPNLog.openvpn)
-            #endif
+            VPNLog.error("❌ [OpenVPNProvider] This means either: 1) Not connected yet, 2) dataCountInterval not set, 3) Session not started", category: VPNLog.openvpn)
             return nil
         }
-
-        #if DEBUG
-        VPNLog.debug("✅ [OpenVPNProvider] Returning stats: received=\(bytesReceived), sent=\(bytesSent)", category: VPNLog.openvpn)
-        #endif
-
-        return (received: bytesReceived, sent: bytesSent)
     }
 
     // MARK: - Private Methods
