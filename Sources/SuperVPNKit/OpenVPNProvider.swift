@@ -127,22 +127,20 @@ public class OpenVPNProvider: VPNProvider {
     }
 
     public func getDataCount() -> (received: UInt64, sent: UInt64)? {
-        #if DEBUG
         VPNLog.debug("📊 [OpenVPNProvider] getDataCount() called", category: VPNLog.openvpn)
         VPNLog.debug("📊 [OpenVPNProvider] App group: \(appGroup)", category: VPNLog.openvpn)
-        #endif
 
         // Read stats from shared UserDefaults (written by the extension)
         guard let sharedDefaults = UserDefaults(suiteName: appGroup) else {
-            #if DEBUG
             VPNLog.error("❌ [OpenVPNProvider] Failed to create UserDefaults for app group: \(appGroup)", category: VPNLog.openvpn)
-            #endif
             return nil
         }
 
-        #if DEBUG
         VPNLog.debug("✅ [OpenVPNProvider] Successfully created UserDefaults", category: VPNLog.openvpn)
-        #endif
+
+        // Dump all keys to see what's in there
+        let allKeys = sharedDefaults.dictionaryRepresentation().keys
+        VPNLog.debug("📊 [OpenVPNProvider] All keys in shared UserDefaults: \(allKeys)", category: VPNLog.openvpn)
 
         let bytesReceived = UInt64(sharedDefaults.integer(forKey: "vpn_bytes_received"))
         let bytesSent = UInt64(sharedDefaults.integer(forKey: "vpn_bytes_sent"))
