@@ -79,10 +79,16 @@ public class OpenVPNProvider: VPNProvider {
         var extra = NetworkExtensionExtra()
         extra.passwordReference = passwordReference
 
-        let protocolConfiguration = try modifiedProviderConfig.asTunnelProtocol(
+        var protocolConfiguration = try modifiedProviderConfig.asTunnelProtocol(
             withBundleIdentifier: bundleIdentifier,
             extra: extra
         )
+
+        // Add appGroup to providerConfiguration so the extension can access it
+        if var providerConfig = protocolConfiguration.providerConfiguration {
+            providerConfig["appGroup"] = appGroup as NSString
+            protocolConfiguration.providerConfiguration = providerConfig
+        }
 
         vpnManager.protocolConfiguration = protocolConfiguration
         vpnManager.localizedDescription = "SuperVPN - OpenVPN"
@@ -121,11 +127,31 @@ public class OpenVPNProvider: VPNProvider {
     }
 
     public func getDataCount() -> (received: UInt64, sent: UInt64)? {
-        guard let providerConfig = currentProviderConfiguration,
-              let dataCount = providerConfig.dataCount else {
+        // Read stats from shared UserDefaults (written by the extension)
+        guard let sharedDefaults = UserDefaults(suiteName: appGroup) else {
             return nil
         }
-        return (UInt64(dataCount.received), UInt64(dataCount.sent))
+
+        let bytesReceived = UInt64(sharedDefaults.integer(forKey: "vpn_bytes_received"))
+        let bytesSent = UInt64(sharedDefaults.integer(forKey: "vpn_bytes_sent"))
+
+        // Check if stats were recently updated (within last 10 seconds)
+        let lastUpdate = sharedDefaults.double(forKey: "vpn_stats_updated_at")
+        let now = Date().timeIntervalSince1970
+        let isStale = (now - lastUpdate) > 10
+
+        #if DEBUG
+        if isStale && (bytesReceived > 0 || bytesSent > 0) {
+            VPNLog.debug("Stats are stale (last update: \(Int(now - lastUpdate))s ago)", category: VPNLog.openvpn)
+        }
+        #endif
+
+        // Return nil if no data has been recorded
+        guard bytesReceived > 0 || bytesSent > 0 else {
+            return nil
+        }
+
+        return (received: bytesReceived, sent: bytesSent)
     }
 
     // MARK: - Private Methods

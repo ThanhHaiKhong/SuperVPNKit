@@ -6,6 +6,9 @@ import TunnelKitCore
 /// Provides common configuration and logging for OpenVPN tunnels
 open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
 
+    private var statsUpdateTimer: DispatchSourceTimer?
+    private var appGroupIdentifier: String?
+
     /// Initializes the tunnel provider
     public override init() {
         super.init()
@@ -40,6 +43,17 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
             VPNLogExtension.debug("Tunnel options: \(options)")
         }
 
+        // Extract app group identifier from protocol configuration
+        if let protocolConfig = self.protocolConfiguration as? NETunnelProviderProtocol,
+           let providerConfig = protocolConfig.providerConfiguration,
+           let appGroup = providerConfig["appGroup"] as? String {
+            self.appGroupIdentifier = appGroup
+            NSLog("📱 [SuperVPNTunnelProvider] Using app group: \(appGroup)")
+        }
+
+        // Start stats update timer
+        startStatsUpdateTimer()
+
         // Call parent implementation
         super.startTunnel(options: options, completionHandler: completionHandler)
     }
@@ -48,6 +62,12 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
     open override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         NSLog("🛑 [SuperVPNTunnelProvider] Stopping tunnel. Reason: \(reason.rawValue)")
         VPNLogExtension.info("Stopping VPN tunnel. Reason: \(reason.rawValue)")
+
+        // Stop stats update timer
+        stopStatsUpdateTimer()
+
+        // Clear stats from shared UserDefaults
+        clearSharedStats()
 
         // Call parent implementation
         super.stopTunnel(with: reason, completionHandler: completionHandler)
@@ -78,5 +98,69 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
 
         // Call parent implementation
         super.wake()
+    }
+
+    // MARK: - Stats Management
+
+    /// Start the timer that periodically writes stats to shared UserDefaults
+    private func startStatsUpdateTimer() {
+        // Cancel any existing timer
+        stopStatsUpdateTimer()
+
+        let timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global(qos: .utility))
+        timer.schedule(deadline: .now(), repeating: .seconds(3))
+        timer.setEventHandler { [weak self] in
+            self?.updateSharedStats()
+        }
+        timer.resume()
+        statsUpdateTimer = timer
+
+        NSLog("⏱️ [SuperVPNTunnelProvider] Stats update timer started")
+    }
+
+    /// Stop the stats update timer
+    private func stopStatsUpdateTimer() {
+        statsUpdateTimer?.cancel()
+        statsUpdateTimer = nil
+        NSLog("⏱️ [SuperVPNTunnelProvider] Stats update timer stopped")
+    }
+
+    /// Update connection stats in shared UserDefaults
+    private func updateSharedStats() {
+        guard let appGroup = appGroupIdentifier,
+              let sharedDefaults = UserDefaults(suiteName: appGroup) else {
+            return
+        }
+
+        // Get data count from TunnelKit
+        if let dataCount = self.dataCount {
+            sharedDefaults.set(UInt64(dataCount.received), forKey: "vpn_bytes_received")
+            sharedDefaults.set(UInt64(dataCount.sent), forKey: "vpn_bytes_sent")
+            sharedDefaults.set(Date().timeIntervalSince1970, forKey: "vpn_stats_updated_at")
+            sharedDefaults.synchronize()
+
+            #if DEBUG
+            NSLog("📊 [SuperVPNTunnelProvider] Stats updated: sent=\(dataCount.sent), received=\(dataCount.received)")
+            #endif
+        } else {
+            #if DEBUG
+            NSLog("⚠️ [SuperVPNTunnelProvider] dataCount is nil")
+            #endif
+        }
+    }
+
+    /// Clear stats from shared UserDefaults
+    private func clearSharedStats() {
+        guard let appGroup = appGroupIdentifier,
+              let sharedDefaults = UserDefaults(suiteName: appGroup) else {
+            return
+        }
+
+        sharedDefaults.removeObject(forKey: "vpn_bytes_received")
+        sharedDefaults.removeObject(forKey: "vpn_bytes_sent")
+        sharedDefaults.removeObject(forKey: "vpn_stats_updated_at")
+        sharedDefaults.synchronize()
+
+        NSLog("🗑️ [SuperVPNTunnelProvider] Stats cleared from shared defaults")
     }
 }
