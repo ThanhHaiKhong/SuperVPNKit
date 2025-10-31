@@ -1,6 +1,7 @@
 import NetworkExtension
 import TunnelKitOpenVPNAppExtension
 import TunnelKitOpenVPNManager
+import TunnelKitOpenVPN
 import TunnelKitCore
 
 /// Base class for SuperVPN tunnel provider
