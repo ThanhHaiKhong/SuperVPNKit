@@ -54,12 +54,10 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
             NSLog("📱 [SuperVPNTunnelProvider] Using app group: \(appGroup)")
         }
 
-        // Capture initial interface stats (to calculate session delta)
-        if let stats = getTunnelInterfaceStats() {
-            initialBytesReceived = stats.received
-            initialBytesSent = stats.sent
-            NSLog("📊 [SuperVPNTunnelProvider] Initial stats captured: sent=\(initialBytesSent), received=\(initialBytesReceived)")
-        }
+        // Reset initial stats - they will be captured on first stats update
+        initialBytesReceived = 0
+        initialBytesSent = 0
+        NSLog("📊 [SuperVPNTunnelProvider] Initial stats reset to 0 - will capture baseline on first update")
 
         // Start stats update timer
         startStatsUpdateTimer()
@@ -154,6 +152,20 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
             return
         }
 
+        // If this is the first update (initial stats are 0), capture the baseline
+        if initialBytesReceived == 0 && initialBytesSent == 0 {
+            initialBytesReceived = stats.received
+            initialBytesSent = stats.sent
+            NSLog("📊 [SuperVPNTunnelProvider] Baseline captured: sent=\(initialBytesSent), received=\(initialBytesReceived)")
+
+            // Write zeros for the first update (since we just set the baseline)
+            sharedDefaults.set(UInt64(0), forKey: "vpn_bytes_received")
+            sharedDefaults.set(UInt64(0), forKey: "vpn_bytes_sent")
+            sharedDefaults.set(Date().timeIntervalSince1970, forKey: "vpn_stats_updated_at")
+            sharedDefaults.synchronize()
+            return
+        }
+
         // Calculate session delta (current - initial)
         let sessionBytesReceived = stats.received >= initialBytesReceived ? stats.received - initialBytesReceived : stats.received
         let sessionBytesSent = stats.sent >= initialBytesSent ? stats.sent - initialBytesSent : stats.sent
@@ -164,7 +176,7 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
         sharedDefaults.synchronize()
 
         #if DEBUG
-        NSLog("📊 [SuperVPNTunnelProvider] Stats updated: sent=\(sessionBytesSent), received=\(sessionBytesReceived) (total: sent=\(stats.sent), received=\(stats.received))")
+        NSLog("📊 [SuperVPNTunnelProvider] Stats updated: sent=\(sessionBytesSent), received=\(sessionBytesReceived) (total: sent=\(stats.sent), received=\(stats.received), initial: sent=\(initialBytesSent), received=\(initialBytesReceived))")
         #endif
     }
 
