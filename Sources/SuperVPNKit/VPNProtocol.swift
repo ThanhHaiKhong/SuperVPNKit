@@ -13,6 +13,7 @@ public protocol VPNProvider {
     func updateStatus(_ status: NEVPNStatus)
     func loadConfiguration() async throws
     func getConnection() -> NEVPNConnection?
+    func getDataCount() -> (received: UInt64, sent: UInt64)?
 }
 
 // MARK: - VPN Provider Extensions
@@ -21,6 +22,8 @@ extension VPNProvider {
     /// Get current data count (bytes sent/received)
     /// Default implementation returns nil, override in specific providers
     public func getDataCount() -> (received: UInt64, sent: UInt64)? {
+        print("⚠️ [VPNProvider] DEFAULT getDataCount() called - this means OpenVPNProvider override is NOT being used!")
+        print("⚠️ [VPNProvider] Type: \(type(of: self))")
         return nil
     }
 }
