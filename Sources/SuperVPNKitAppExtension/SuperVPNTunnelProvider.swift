@@ -11,6 +11,7 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
     private var appGroupIdentifier: String?
     private var initialBytesReceived: UInt64 = 0
     private var initialBytesSent: UInt64 = 0
+    private var tunnelInterfaceName: String?
 
     /// Initializes the tunnel provider
     public override init() {
@@ -77,9 +78,10 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
         // Clear stats from shared UserDefaults
         clearSharedStats()
 
-        // Reset initial byte counts
+        // Reset initial byte counts and interface name
         initialBytesReceived = 0
         initialBytesSent = 0
+        tunnelInterfaceName = nil
 
         // Call parent implementation
         super.stopTunnel(with: reason, completionHandler: completionHandler)
@@ -144,6 +146,15 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
             return
         }
 
+        // Identify the tunnel interface on first run
+        if tunnelInterfaceName == nil {
+            tunnelInterfaceName = getTunnelInterfaceName()
+            if tunnelInterfaceName == nil {
+                NSLog("⚠️ [SuperVPNTunnelProvider] Could not identify tunnel interface yet")
+                return
+            }
+        }
+
         // Get data count from network interface statistics
         guard let stats = getTunnelInterfaceStats() else {
             #if DEBUG
@@ -180,8 +191,73 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
         #endif
     }
 
+    /// Get the tunnel interface name from packetFlow
+    private func getTunnelInterfaceName() -> String? {
+        // Try to get the file descriptor from packetFlow
+        guard let fd = packetFlow.value(forKeyPath: "socket.fileDescriptor") as? Int32 else {
+            NSLog("⚠️ [SuperVPNTunnelProvider] Could not get file descriptor from packetFlow")
+            return nil
+        }
+
+        NSLog("🔍 [SuperVPNTunnelProvider] Got file descriptor: \(fd)")
+
+        // Use SIOCGIFNAME to get the interface name from file descriptor
+        var ifr = ifreq()
+        var len = socklen_t(MemoryLayout<sockaddr>.size)
+
+        // Get the local address associated with this socket
+        withUnsafeMutablePointer(to: &ifr.ifr_addr) { addrPtr in
+            _ = getsockname(fd, addrPtr, &len)
+        }
+
+        // Try to find the interface by iterating through all interfaces
+        var ifaddr: UnsafeMutablePointer<ifaddrs>?
+        guard getifaddrs(&ifaddr) == 0 else {
+            NSLog("⚠️ [SuperVPNTunnelProvider] getifaddrs failed")
+            return nil
+        }
+
+        defer {
+            freeifaddrs(ifaddr)
+        }
+
+        var ptr = ifaddr
+        var foundInterface: String?
+
+        while ptr != nil {
+            defer { ptr = ptr?.pointee.ifa_next }
+
+            guard let interface = ptr?.pointee else { continue }
+
+            let name = String(cString: interface.ifa_name)
+
+            // Look for utun interfaces
+            guard name.hasPrefix("utun") else { continue }
+
+            NSLog("🔍 [SuperVPNTunnelProvider] Checking interface: \(name)")
+
+            // Store the first utun interface we find
+            // We'll refine this by checking which one is active
+            if foundInterface == nil {
+                foundInterface = name
+            }
+        }
+
+        if let name = foundInterface {
+            NSLog("✅ [SuperVPNTunnelProvider] Identified tunnel interface: \(name)")
+        }
+
+        return foundInterface
+    }
+
     /// Get network statistics from the tunnel interface
     private func getTunnelInterfaceStats() -> (received: UInt64, sent: UInt64)? {
+        // Make sure we have identified the interface
+        guard let targetInterfaceName = tunnelInterfaceName else {
+            NSLog("⚠️ [SuperVPNTunnelProvider] Tunnel interface not yet identified")
+            return nil
+        }
+
         var ifaddr: UnsafeMutablePointer<ifaddrs>?
 
         guard getifaddrs(&ifaddr) == 0 else {
@@ -193,11 +269,10 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
         }
 
         #if DEBUG
-        NSLog("🔍 [SuperVPNTunnelProvider] Scanning network interfaces...")
+        NSLog("🔍 [SuperVPNTunnelProvider] Reading stats from interface: \(targetInterfaceName)")
         #endif
 
         var ptr = ifaddr
-        var allUtunInterfaces: [(name: String, sent: UInt64, received: UInt64)] = []
 
         while ptr != nil {
             defer { ptr = ptr?.pointee.ifa_next }
@@ -206,8 +281,8 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
 
             let name = String(cString: interface.ifa_name)
 
-            // OpenVPN typically uses utun interfaces
-            guard name.hasPrefix("utun") else { continue }
+            // Only read from our specific tunnel interface
+            guard name == targetInterfaceName else { continue }
 
             // Get interface data
             if interface.ifa_addr.pointee.sa_family == UInt8(AF_LINK) {
@@ -216,26 +291,15 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
                 let received = UInt64(data.pointee.ifi_ibytes)
                 let sent = UInt64(data.pointee.ifi_obytes)
 
-                allUtunInterfaces.append((name: name, sent: sent, received: received))
-
                 #if DEBUG
-                NSLog("🔍 [SuperVPNTunnelProvider] Found interface \(name): sent=\(sent), received=\(received)")
+                NSLog("📊 [SuperVPNTunnelProvider] Interface \(name) stats: sent=\(sent), received=\(received)")
                 #endif
 
-                // Only return stats for an active interface with traffic
-                if received > 0 || sent > 0 {
-                    #if DEBUG
-                    NSLog("✅ [SuperVPNTunnelProvider] Returning stats from \(name)")
-                    #endif
-                    return (received: received, sent: sent)
-                }
+                return (received: received, sent: sent)
             }
         }
 
-        #if DEBUG
-        NSLog("⚠️ [SuperVPNTunnelProvider] No active utun interfaces found. Total scanned: \(allUtunInterfaces.count)")
-        #endif
-
+        NSLog("⚠️ [SuperVPNTunnelProvider] Could not find interface \(targetInterfaceName)")
         return nil
     }
 
