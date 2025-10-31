@@ -1,7 +1,5 @@
 import NetworkExtension
 import TunnelKitOpenVPNAppExtension
-import TunnelKitOpenVPNManager
-import TunnelKitOpenVPN
 import TunnelKitCore
 
 /// Base class for SuperVPN tunnel provider
@@ -136,33 +134,24 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
 
         // Get data count from TunnelKit provider configuration
         guard let tunnelProtocol = self.protocolConfiguration as? NETunnelProviderProtocol,
-              let providerConfig = tunnelProtocol.providerConfiguration else {
+              let providerConfig = tunnelProtocol.providerConfiguration,
+              let dataCountDict = providerConfig["dataCount"] as? [String: Any],
+              let received = dataCountDict["received"] as? UInt,
+              let sent = dataCountDict["sent"] as? UInt else {
+            #if DEBUG
+            NSLog("⚠️ [SuperVPNTunnelProvider] Unable to read dataCount from provider configuration")
+            #endif
             return
         }
 
-        // Parse OpenVPN.ProviderConfiguration from dictionary
-        do {
-            let cfg = try OpenVPN.ProviderConfiguration.deserialized(providerConfig)
+        sharedDefaults.set(UInt64(received), forKey: "vpn_bytes_received")
+        sharedDefaults.set(UInt64(sent), forKey: "vpn_bytes_sent")
+        sharedDefaults.set(Date().timeIntervalSince1970, forKey: "vpn_stats_updated_at")
+        sharedDefaults.synchronize()
 
-            if let dataCount = cfg.dataCount {
-                sharedDefaults.set(UInt64(dataCount.received), forKey: "vpn_bytes_received")
-                sharedDefaults.set(UInt64(dataCount.sent), forKey: "vpn_bytes_sent")
-                sharedDefaults.set(Date().timeIntervalSince1970, forKey: "vpn_stats_updated_at")
-                sharedDefaults.synchronize()
-
-                #if DEBUG
-                NSLog("📊 [SuperVPNTunnelProvider] Stats updated: sent=\(dataCount.sent), received=\(dataCount.received)")
-                #endif
-            } else {
-                #if DEBUG
-                NSLog("⚠️ [SuperVPNTunnelProvider] dataCount is nil in provider configuration")
-                #endif
-            }
-        } catch {
-            #if DEBUG
-            NSLog("⚠️ [SuperVPNTunnelProvider] Failed to parse provider configuration: \(error)")
-            #endif
-        }
+        #if DEBUG
+        NSLog("📊 [SuperVPNTunnelProvider] Stats updated: sent=\(sent), received=\(received)")
+        #endif
     }
 
     /// Clear stats from shared UserDefaults
