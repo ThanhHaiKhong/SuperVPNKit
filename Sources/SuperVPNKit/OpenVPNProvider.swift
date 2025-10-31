@@ -142,6 +142,13 @@ public class OpenVPNProvider: VPNProvider {
         let allKeys = sharedDefaults.dictionaryRepresentation().keys
         VPNLog.debug("📊 [OpenVPNProvider] All keys in shared UserDefaults: \(allKeys)", category: VPNLog.openvpn)
 
+        // First, check if TunnelKit is writing data at all
+        if let tunnelKitDataCount = sharedDefaults.array(forKey: "OpenVPN.DataCount") as? [UInt] {
+            VPNLog.debug("✅ [OpenVPNProvider] TunnelKit IS writing data: \(tunnelKitDataCount)", category: VPNLog.openvpn)
+        } else {
+            VPNLog.error("❌ [OpenVPNProvider] TunnelKit is NOT writing data to OpenVPN.DataCount", category: VPNLog.openvpn)
+        }
+
         let bytesReceived = UInt64(sharedDefaults.integer(forKey: "vpn_bytes_received"))
         let bytesSent = UInt64(sharedDefaults.integer(forKey: "vpn_bytes_sent"))
 

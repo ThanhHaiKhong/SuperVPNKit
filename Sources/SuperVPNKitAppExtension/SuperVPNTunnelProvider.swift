@@ -129,12 +129,13 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
         let timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global(qos: .utility))
         timer.schedule(deadline: .now(), repeating: .seconds(3))
         timer.setEventHandler { [weak self] in
+            NSLog("⏱️ [SuperVPNTunnelProvider] Timer fired - calling updateSharedStats()")
             self?.updateSharedStats()
         }
         timer.resume()
         statsUpdateTimer = timer
 
-        NSLog("⏱️ [SuperVPNTunnelProvider] Stats update timer started")
+        NSLog("⏱️ [SuperVPNTunnelProvider] Stats update timer started - will fire every 3 seconds")
     }
 
     /// Stop the stats update timer
