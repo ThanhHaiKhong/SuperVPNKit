@@ -1,0 +1,19 @@
+{
+  "": {
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitAppExtension.build/master.swiftdeps"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/Sources/SuperVPNKitAppExtension/SuperVPNTunnelProvider.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitAppExtension.build/SuperVPNTunnelProvider.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitAppExtension.build/SuperVPNTunnelProvider.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitAppExtension.build/SuperVPNTunnelProvider~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitAppExtension.build/SuperVPNTunnelProvider.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitAppExtension.build/SuperVPNTunnelProvider.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/Sources/SuperVPNKitAppExtension/VPNLog+AppExtension.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitAppExtension.build/VPNLog+AppExtension.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitAppExtension.build/VPNLog+AppExtension.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitAppExtension.build/VPNLog+AppExtension~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitAppExtension.build/VPNLog+AppExtension.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitAppExtension.build/VPNLog+AppExtension.dia"
+  }
+}

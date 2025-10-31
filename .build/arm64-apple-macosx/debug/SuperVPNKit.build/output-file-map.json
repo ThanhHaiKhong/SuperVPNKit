@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/master.swiftdeps"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/Sources/SuperVPNKit/IKEv2Provider.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/IKEv2Provider.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/IKEv2Provider.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/IKEv2Provider~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/IKEv2Provider.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/IKEv2Provider.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/Sources/SuperVPNKit/OpenVPNProvider.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/OpenVPNProvider.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/OpenVPNProvider.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/OpenVPNProvider~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/OpenVPNProvider.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/OpenVPNProvider.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/Sources/SuperVPNKit/VPNLog.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNLog.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNLog.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNLog~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNLog.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNLog.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/Sources/SuperVPNKit/VPNManager.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNManager.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNManager.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNManager.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNManager.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/Sources/SuperVPNKit/VPNProtocol.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNProtocol.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNProtocol.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNProtocol~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNProtocol.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNProtocol.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/Sources/SuperVPNKit/VPNTunnelHelper.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNTunnelHelper.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNTunnelHelper.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNTunnelHelper~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNTunnelHelper.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKit.build/VPNTunnelHelper.dia"
+  }
+}

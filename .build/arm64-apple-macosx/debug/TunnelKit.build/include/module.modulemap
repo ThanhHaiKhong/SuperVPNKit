@@ -1,0 +1,3 @@
+module TunnelKit {
+    header "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKit.build/include/TunnelKit-Swift.h"
+}

@@ -1,0 +1,82 @@
+{
+  "": {
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/master.swiftdeps"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNCore/CompressionAlgorithm.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CompressionAlgorithm.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CompressionAlgorithm.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CompressionAlgorithm~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CompressionAlgorithm.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CompressionAlgorithm.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNCore/CompressionFraming.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CompressionFraming.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CompressionFraming.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CompressionFraming~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CompressionFraming.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CompressionFraming.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNCore/Configuration.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/Configuration.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/Configuration.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/Configuration~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/Configuration.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/Configuration.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNCore/ConfigurationError.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/ConfigurationError.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/ConfigurationError.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/ConfigurationError~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/ConfigurationError.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/ConfigurationError.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNCore/ConfigurationParser.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/ConfigurationParser.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/ConfigurationParser.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/ConfigurationParser~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/ConfigurationParser.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/ConfigurationParser.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNCore/CryptoContainer.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CryptoContainer.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CryptoContainer.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CryptoContainer~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CryptoContainer.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/CryptoContainer.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNCore/OpenVPN.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/OpenVPN.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/OpenVPN.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/OpenVPN~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/OpenVPN.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/OpenVPN.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNCore/OpenVPNError.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/OpenVPNError.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/OpenVPNError.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/OpenVPNError~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/OpenVPNError.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/OpenVPNError.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNCore/StaticKey.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/StaticKey.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/StaticKey.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/StaticKey~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/StaticKey.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/StaticKey.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNCore/TLSWrap.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/TLSWrap.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/TLSWrap.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/TLSWrap~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/TLSWrap.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/TLSWrap.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNCore/XORMethod.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/XORMethod.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/XORMethod.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/XORMethod~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/XORMethod.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNCore.build/XORMethod.dia"
+  }
+}

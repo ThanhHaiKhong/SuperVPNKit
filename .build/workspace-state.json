@@ -1,0 +1,118 @@
+{
+  "object" : {
+    "artifacts" : [
+      {
+        "kind" : {
+          "xcframework" : {
+
+          }
+        },
+        "packageRef" : {
+          "identity" : "openssl-apple",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/passepartoutvpn/openssl-apple",
+          "name" : "openssl-apple"
+        },
+        "path" : "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/artifacts/openssl-apple/openssl/openssl.xcframework",
+        "source" : {
+          "checksum" : "2ca5f3490b3f19f6630f11b2d3364b4946562adbe0936982073c9aeebf8bd575",
+          "type" : "remote",
+          "url" : "https://github.com/passepartoutvpn/openssl-apple/releases/download/3.5.500/openssl.xcframework.zip"
+        },
+        "targetName" : "openssl"
+      },
+      {
+        "kind" : {
+          "xcframework" : {
+
+          }
+        },
+        "packageRef" : {
+          "identity" : "vpncorekit",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/ThanhHaiKhong/VpnCoreKit.git",
+          "name" : "VpnCoreKit"
+        },
+        "path" : "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/VpnCoreKit/Frameworks/VpnCore.xcframework",
+        "source" : {
+          "type" : "local"
+        },
+        "targetName" : "VpnCore"
+      }
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "openssl-apple",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/passepartoutvpn/openssl-apple",
+          "name" : "openssl-apple"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "93a055021f02f1395a539dd418997699fdcfa86a",
+            "version" : "3.5.500"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "openssl-apple"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swiftybeaver",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/SwiftyBeaver/SwiftyBeaver",
+          "name" : "SwiftyBeaver"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "12b5acf96d98f91d50de447369bd18df74600f1a",
+            "version" : "1.9.6"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "SwiftyBeaver"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "tunnelkit",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/ThanhHaiKhong/TunnelKit.git",
+          "name" : "TunnelKit"
+        },
+        "state" : {
+          "checkoutState" : {
+            "branch" : "master",
+            "revision" : "b87c8b3b95407156a73b708d7f6f5ad0cd1b2aac"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "TunnelKit"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "vpncorekit",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/ThanhHaiKhong/VpnCoreKit.git",
+          "name" : "VpnCoreKit"
+        },
+        "state" : {
+          "checkoutState" : {
+            "branch" : "master",
+            "revision" : "5559b753d00118c35147f2e3b233e1f70d06d916"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "VpnCoreKit"
+      }
+    ],
+    "prebuilts" : [
+
+    ]
+  },
+  "version" : 7
+}

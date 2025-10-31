@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/master.swiftdeps"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNAppExtension/ConnectionStrategy.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/ConnectionStrategy.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/ConnectionStrategy.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/ConnectionStrategy~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/ConnectionStrategy.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/ConnectionStrategy.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNAppExtension/NETCPLink.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NETCPLink.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NETCPLink.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NETCPLink~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NETCPLink.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NETCPLink.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNAppExtension/NEUDPLink.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NEUDPLink.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NEUDPLink.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NEUDPLink~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NEUDPLink.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NEUDPLink.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNAppExtension/NetworkSettingsBuilder.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NetworkSettingsBuilder.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NetworkSettingsBuilder.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NetworkSettingsBuilder~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NetworkSettingsBuilder.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/NetworkSettingsBuilder.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNAppExtension/OpenVPNTunnelProvider.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/OpenVPNTunnelProvider.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/OpenVPNTunnelProvider.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/OpenVPNTunnelProvider~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/OpenVPNTunnelProvider.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/OpenVPNTunnelProvider.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNAppExtension/ResolvedRemote.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/ResolvedRemote.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/ResolvedRemote.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/ResolvedRemote~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/ResolvedRemote.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNAppExtension.build/ResolvedRemote.dia"
+  }
+}

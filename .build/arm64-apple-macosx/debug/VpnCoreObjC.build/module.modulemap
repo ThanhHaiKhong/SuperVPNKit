@@ -1,0 +1,4 @@
+module VpnCoreObjC {
+    umbrella header "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/VpnCoreKit/Sources/VpnCoreObjC/VpnCoreObjC.h"
+    export *
+}

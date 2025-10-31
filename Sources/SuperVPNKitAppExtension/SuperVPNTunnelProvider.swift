@@ -192,7 +192,13 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
             freeifaddrs(ifaddr)
         }
 
+        #if DEBUG
+        NSLog("🔍 [SuperVPNTunnelProvider] Scanning network interfaces...")
+        #endif
+
         var ptr = ifaddr
+        var allUtunInterfaces: [(name: String, sent: UInt64, received: UInt64)] = []
+
         while ptr != nil {
             defer { ptr = ptr?.pointee.ifa_next }
 
@@ -210,12 +216,25 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
                 let received = UInt64(data.pointee.ifi_ibytes)
                 let sent = UInt64(data.pointee.ifi_obytes)
 
+                allUtunInterfaces.append((name: name, sent: sent, received: received))
+
+                #if DEBUG
+                NSLog("🔍 [SuperVPNTunnelProvider] Found interface \(name): sent=\(sent), received=\(received)")
+                #endif
+
                 // Only return stats for an active interface with traffic
                 if received > 0 || sent > 0 {
+                    #if DEBUG
+                    NSLog("✅ [SuperVPNTunnelProvider] Returning stats from \(name)")
+                    #endif
                     return (received: received, sent: sent)
                 }
             }
         }
+
+        #if DEBUG
+        NSLog("⚠️ [SuperVPNTunnelProvider] No active utun interfaces found. Total scanned: \(allUtunInterfaces.count)")
+        #endif
 
         return nil
     }

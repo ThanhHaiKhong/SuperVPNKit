@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitTests.build/master.swiftdeps"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/Tests/SuperVPNKitTests/SuperVPNKitTests.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitTests.build/SuperVPNKitTests.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitTests.build/SuperVPNKitTests.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitTests.build/SuperVPNKitTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitTests.build/SuperVPNKitTests.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/SuperVPNKitTests.build/SuperVPNKitTests.dia"
+  }
+}

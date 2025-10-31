@@ -1,0 +1,61 @@
+{
+  "": {
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/master.swiftdeps"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitManager/Keychain.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/Keychain.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/Keychain.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/Keychain~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/Keychain.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/Keychain.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitManager/MockVPN.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/MockVPN.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/MockVPN.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/MockVPN~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/MockVPN.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/MockVPN.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitManager/NetworkExtensionConfiguration.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/NetworkExtensionConfiguration.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/NetworkExtensionConfiguration.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/NetworkExtensionConfiguration~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/NetworkExtensionConfiguration.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/NetworkExtensionConfiguration.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitManager/NetworkExtensionVPN.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/NetworkExtensionVPN.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/NetworkExtensionVPN.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/NetworkExtensionVPN~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/NetworkExtensionVPN.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/NetworkExtensionVPN.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitManager/TunnelKitManagerError.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/TunnelKitManagerError.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/TunnelKitManagerError.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/TunnelKitManagerError~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/TunnelKitManagerError.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/TunnelKitManagerError.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitManager/VPN.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPN.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPN.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPN~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPN.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPN.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitManager/VPNNotification.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPNNotification.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPNNotification.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPNNotification~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPNNotification.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPNNotification.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitManager/VPNStatus.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPNStatus.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPNStatus.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPNStatus~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPNStatus.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitManager.build/VPNStatus.dia"
+  }
+}

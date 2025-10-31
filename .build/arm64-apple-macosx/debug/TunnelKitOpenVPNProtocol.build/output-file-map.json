@@ -1,0 +1,96 @@
+{
+  "": {
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/master.swiftdeps"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/Authenticator.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/Authenticator.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/Authenticator.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/Authenticator~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/Authenticator.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/Authenticator.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/ControlChannel.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ControlChannel.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ControlChannel.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ControlChannel~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ControlChannel.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ControlChannel.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/ControlChannelSerializer.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ControlChannelSerializer.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ControlChannelSerializer.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ControlChannelSerializer~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ControlChannelSerializer.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ControlChannelSerializer.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/CoreConfiguration+OpenVPN.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/CoreConfiguration+OpenVPN.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/CoreConfiguration+OpenVPN.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/CoreConfiguration+OpenVPN~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/CoreConfiguration+OpenVPN.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/CoreConfiguration+OpenVPN.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/EncryptionBridge.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/EncryptionBridge.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/EncryptionBridge.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/EncryptionBridge~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/EncryptionBridge.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/EncryptionBridge.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/OpenVPN+PRNG.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPN+PRNG.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPN+PRNG.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPN+PRNG~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPN+PRNG.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPN+PRNG.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/OpenVPNSession+PIA.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPNSession+PIA.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPNSession+PIA.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPNSession+PIA~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPNSession+PIA.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPNSession+PIA.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/OpenVPNSession.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPNSession.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPNSession.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPNSession~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPNSession.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/OpenVPNSession.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/Packet.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/Packet.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/Packet.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/Packet~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/Packet.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/Packet.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/ProtocolMacros.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ProtocolMacros.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ProtocolMacros.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ProtocolMacros~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ProtocolMacros.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/ProtocolMacros.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/PushReply.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/PushReply.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/PushReply.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/PushReply~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/PushReply.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/PushReply.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/SessionKey.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/SessionKey.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/SessionKey.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/SessionKey~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/SessionKey.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/SessionKey.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/TunnelKitOpenVPNProtocol/XORProcessor.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/XORProcessor.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/XORProcessor.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/XORProcessor~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/XORProcessor.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/TunnelKitOpenVPNProtocol.build/XORProcessor.dia"
+  }
+}

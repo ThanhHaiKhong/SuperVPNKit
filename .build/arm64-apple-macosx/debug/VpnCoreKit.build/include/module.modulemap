@@ -1,0 +1,3 @@
+module VpnCoreKit {
+    header "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/VpnCoreKit.build/include/VpnCoreKit-Swift.h"
+}

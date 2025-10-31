@@ -1,0 +1,26 @@
+{
+  "": {
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/master.swiftdeps"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/__TunnelKitUtils/Data+Manipulation.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/Data+Manipulation.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/Data+Manipulation.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/Data+Manipulation~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/Data+Manipulation.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/Data+Manipulation.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/__TunnelKitUtils/NSRegularExpression+Shortcuts.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/NSRegularExpression+Shortcuts.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/NSRegularExpression+Shortcuts.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/NSRegularExpression+Shortcuts~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/NSRegularExpression+Shortcuts.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/NSRegularExpression+Shortcuts.dia"
+  },
+  "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/__TunnelKitUtils/Utils.swift": {
+    "dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/Utils.d",
+    "object": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/Utils.swift.o",
+    "swiftmodule": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/Utils~partial.swiftmodule",
+    "swift-dependencies": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/Utils.swiftdeps",
+    "diagnostics": "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/__TunnelKitUtils.build/Utils.dia"
+  }
+}

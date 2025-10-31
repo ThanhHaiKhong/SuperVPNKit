@@ -1,0 +1,4 @@
+module CTunnelKitOpenVPNCore {
+    umbrella "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/checkouts/TunnelKit/Sources/CTunnelKitOpenVPNCore/include"
+    export *
+}

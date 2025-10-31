@@ -1,0 +1,5 @@
+framework module VpnCore {
+    umbrella header "vc_vpn_api.h"
+    export *
+    module * { export * }
+}
