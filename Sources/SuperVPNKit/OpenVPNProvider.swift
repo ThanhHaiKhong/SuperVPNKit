@@ -127,10 +127,22 @@ public class OpenVPNProvider: VPNProvider {
     }
 
     public func getDataCount() -> (received: UInt64, sent: UInt64)? {
+        #if DEBUG
+        VPNLog.debug("📊 [OpenVPNProvider] getDataCount() called", category: VPNLog.openvpn)
+        VPNLog.debug("📊 [OpenVPNProvider] App group: \(appGroup)", category: VPNLog.openvpn)
+        #endif
+
         // Read stats from shared UserDefaults (written by the extension)
         guard let sharedDefaults = UserDefaults(suiteName: appGroup) else {
+            #if DEBUG
+            VPNLog.error("❌ [OpenVPNProvider] Failed to create UserDefaults for app group: \(appGroup)", category: VPNLog.openvpn)
+            #endif
             return nil
         }
+
+        #if DEBUG
+        VPNLog.debug("✅ [OpenVPNProvider] Successfully created UserDefaults", category: VPNLog.openvpn)
+        #endif
 
         let bytesReceived = UInt64(sharedDefaults.integer(forKey: "vpn_bytes_received"))
         let bytesSent = UInt64(sharedDefaults.integer(forKey: "vpn_bytes_sent"))
@@ -141,15 +153,25 @@ public class OpenVPNProvider: VPNProvider {
         let isStale = (now - lastUpdate) > 10
 
         #if DEBUG
+        VPNLog.debug("📊 [OpenVPNProvider] Read values: received=\(bytesReceived), sent=\(bytesSent)", category: VPNLog.openvpn)
+        VPNLog.debug("📊 [OpenVPNProvider] Last update: \(lastUpdate), now: \(now), stale: \(isStale)", category: VPNLog.openvpn)
+
         if isStale && (bytesReceived > 0 || bytesSent > 0) {
-            VPNLog.debug("Stats are stale (last update: \(Int(now - lastUpdate))s ago)", category: VPNLog.openvpn)
+            VPNLog.debug("⚠️ [OpenVPNProvider] Stats are stale (last update: \(Int(now - lastUpdate))s ago)", category: VPNLog.openvpn)
         }
         #endif
 
         // Return nil if no data has been recorded
         guard bytesReceived > 0 || bytesSent > 0 else {
+            #if DEBUG
+            VPNLog.debug("⚠️ [OpenVPNProvider] No data recorded, returning nil", category: VPNLog.openvpn)
+            #endif
             return nil
         }
+
+        #if DEBUG
+        VPNLog.debug("✅ [OpenVPNProvider] Returning stats: received=\(bytesReceived), sent=\(bytesSent)", category: VPNLog.openvpn)
+        #endif
 
         return (received: bytesReceived, sent: bytesSent)
     }
