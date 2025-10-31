@@ -79,7 +79,7 @@ public class OpenVPNProvider: VPNProvider {
         var extra = NetworkExtensionExtra()
         extra.passwordReference = passwordReference
 
-        var protocolConfiguration = try modifiedProviderConfig.asTunnelProtocol(
+        let protocolConfiguration = try modifiedProviderConfig.asTunnelProtocol(
             withBundleIdentifier: bundleIdentifier,
             extra: extra
         )
