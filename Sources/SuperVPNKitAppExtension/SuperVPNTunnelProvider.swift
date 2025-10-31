@@ -191,26 +191,8 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
         #endif
     }
 
-    /// Get the tunnel interface name from packetFlow
+    /// Get the tunnel interface name by finding the newest/most recently active utun interface
     private func getTunnelInterfaceName() -> String? {
-        // Try to get the file descriptor from packetFlow
-        guard let fd = packetFlow.value(forKeyPath: "socket.fileDescriptor") as? Int32 else {
-            NSLog("⚠️ [SuperVPNTunnelProvider] Could not get file descriptor from packetFlow")
-            return nil
-        }
-
-        NSLog("🔍 [SuperVPNTunnelProvider] Got file descriptor: \(fd)")
-
-        // Use SIOCGIFNAME to get the interface name from file descriptor
-        var ifr = ifreq()
-        var len = socklen_t(MemoryLayout<sockaddr>.size)
-
-        // Get the local address associated with this socket
-        withUnsafeMutablePointer(to: &ifr.ifr_addr) { addrPtr in
-            _ = getsockname(fd, addrPtr, &len)
-        }
-
-        // Try to find the interface by iterating through all interfaces
         var ifaddr: UnsafeMutablePointer<ifaddrs>?
         guard getifaddrs(&ifaddr) == 0 else {
             NSLog("⚠️ [SuperVPNTunnelProvider] getifaddrs failed")
@@ -222,7 +204,7 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
         }
 
         var ptr = ifaddr
-        var foundInterface: String?
+        var utunInterfaces: [(name: String, index: Int)] = []
 
         while ptr != nil {
             defer { ptr = ptr?.pointee.ifa_next }
@@ -234,20 +216,22 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
             // Look for utun interfaces
             guard name.hasPrefix("utun") else { continue }
 
-            NSLog("🔍 [SuperVPNTunnelProvider] Checking interface: \(name)")
-
-            // Store the first utun interface we find
-            // We'll refine this by checking which one is active
-            if foundInterface == nil {
-                foundInterface = name
+            // Extract the interface number (e.g., "utun3" -> 3)
+            if let numberString = name.components(separatedBy: "utun").last,
+               let interfaceIndex = Int(numberString) {
+                utunInterfaces.append((name: name, index: interfaceIndex))
+                NSLog("🔍 [SuperVPNTunnelProvider] Found interface: \(name) (index: \(interfaceIndex))")
             }
         }
 
-        if let name = foundInterface {
-            NSLog("✅ [SuperVPNTunnelProvider] Identified tunnel interface: \(name)")
+        // Sort by index and take the highest (most recently created)
+        if let newestInterface = utunInterfaces.sorted(by: { $0.index > $1.index }).first {
+            NSLog("✅ [SuperVPNTunnelProvider] Identified tunnel interface: \(newestInterface.name) (highest index)")
+            return newestInterface.name
         }
 
-        return foundInterface
+        NSLog("⚠️ [SuperVPNTunnelProvider] No utun interfaces found")
+        return nil
     }
 
     /// Get network statistics from the tunnel interface

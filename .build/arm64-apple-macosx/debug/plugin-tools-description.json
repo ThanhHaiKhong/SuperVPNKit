@@ -91,11 +91,11 @@
         },
         {
           "kind" : "directory",
-          "name" : "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/VpnCore.framework"
+          "name" : "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/openssl.framework"
         },
         {
           "kind" : "directory",
-          "name" : "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/openssl.framework"
+          "name" : "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/VpnCore.framework"
         },
         {
           "kind" : "file",
@@ -556,11 +556,11 @@
         },
         {
           "kind" : "directory",
-          "name" : "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/VpnCore.framework"
+          "name" : "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/openssl.framework"
         },
         {
           "kind" : "directory",
-          "name" : "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/openssl.framework"
+          "name" : "/Users/thanhhaikhong/Desktop/AppExample/SuperVPNKit/.build/arm64-apple-macosx/debug/VpnCore.framework"
         },
         {
           "kind" : "file",
