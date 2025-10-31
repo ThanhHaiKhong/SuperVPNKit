@@ -2,6 +2,7 @@ import NetworkExtension
 import TunnelKitOpenVPNAppExtension
 import TunnelKitCore
 import TunnelKitOpenVPNCore
+import TunnelKitOpenVPNProtocol
 import TunnelKitOpenVPNManager
 import __TunnelKitUtils
 import Darwin
@@ -26,15 +27,19 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
         // Set data count interval (how often to update byte counts)
         dataCountInterval = 3000 // Update every 3 seconds
 
+        NSLog("🔧 [SuperVPNTunnelProvider] Configured dataCountInterval = \(dataCountInterval)")
+
         #if DEBUG
         // Enable debug logging in debug builds
         debugLogLevel = .debug
         CoreConfiguration.masksPrivateData = false
         VPNLogExtension.debug("SuperVPNTunnelProvider initialized with debug logging")
+        NSLog("🔧 [SuperVPNTunnelProvider] Debug logging enabled, masksPrivateData = false")
         #else
         // Use info level in release builds
         debugLogLevel = .info
         CoreConfiguration.masksPrivateData = true
+        NSLog("🔧 [SuperVPNTunnelProvider] Info logging enabled, masksPrivateData = true")
         #endif
     }
 
@@ -68,6 +73,9 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
 
         // Start stats update timer
         startStatsUpdateTimer()
+
+        // Log dataCountInterval before calling parent
+        NSLog("🔧 [SuperVPNTunnelProvider] About to call super.startTunnel with dataCountInterval = \(dataCountInterval)")
 
         // Call parent implementation
         super.startTunnel(options: options, completionHandler: completionHandler)
