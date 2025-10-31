@@ -1,6 +1,7 @@
 import NetworkExtension
 import TunnelKitOpenVPNAppExtension
 import TunnelKitCore
+import Darwin
 
 /// Base class for SuperVPN tunnel provider
 /// Provides common configuration and logging for OpenVPN tunnels
@@ -8,6 +9,8 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
 
     private var statsUpdateTimer: DispatchSourceTimer?
     private var appGroupIdentifier: String?
+    private var initialBytesReceived: UInt64 = 0
+    private var initialBytesSent: UInt64 = 0
 
     /// Initializes the tunnel provider
     public override init() {
@@ -51,6 +54,13 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
             NSLog("📱 [SuperVPNTunnelProvider] Using app group: \(appGroup)")
         }
 
+        // Capture initial interface stats (to calculate session delta)
+        if let stats = getTunnelInterfaceStats() {
+            initialBytesReceived = stats.received
+            initialBytesSent = stats.sent
+            NSLog("📊 [SuperVPNTunnelProvider] Initial stats captured: sent=\(initialBytesSent), received=\(initialBytesReceived)")
+        }
+
         // Start stats update timer
         startStatsUpdateTimer()
 
@@ -68,6 +78,10 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
 
         // Clear stats from shared UserDefaults
         clearSharedStats()
+
+        // Reset initial byte counts
+        initialBytesReceived = 0
+        initialBytesSent = 0
 
         // Call parent implementation
         super.stopTunnel(with: reason, completionHandler: completionHandler)
@@ -132,26 +146,66 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
             return
         }
 
-        // Get data count from TunnelKit provider configuration
-        guard let tunnelProtocol = self.protocolConfiguration as? NETunnelProviderProtocol,
-              let providerConfig = tunnelProtocol.providerConfiguration,
-              let dataCountDict = providerConfig["dataCount"] as? [String: Any],
-              let received = dataCountDict["received"] as? UInt,
-              let sent = dataCountDict["sent"] as? UInt else {
+        // Get data count from network interface statistics
+        guard let stats = getTunnelInterfaceStats() else {
             #if DEBUG
-            NSLog("⚠️ [SuperVPNTunnelProvider] Unable to read dataCount from provider configuration")
+            NSLog("⚠️ [SuperVPNTunnelProvider] Unable to read network interface statistics")
             #endif
             return
         }
 
-        sharedDefaults.set(UInt64(received), forKey: "vpn_bytes_received")
-        sharedDefaults.set(UInt64(sent), forKey: "vpn_bytes_sent")
+        // Calculate session delta (current - initial)
+        let sessionBytesReceived = stats.received >= initialBytesReceived ? stats.received - initialBytesReceived : stats.received
+        let sessionBytesSent = stats.sent >= initialBytesSent ? stats.sent - initialBytesSent : stats.sent
+
+        sharedDefaults.set(sessionBytesReceived, forKey: "vpn_bytes_received")
+        sharedDefaults.set(sessionBytesSent, forKey: "vpn_bytes_sent")
         sharedDefaults.set(Date().timeIntervalSince1970, forKey: "vpn_stats_updated_at")
         sharedDefaults.synchronize()
 
         #if DEBUG
-        NSLog("📊 [SuperVPNTunnelProvider] Stats updated: sent=\(sent), received=\(received)")
+        NSLog("📊 [SuperVPNTunnelProvider] Stats updated: sent=\(sessionBytesSent), received=\(sessionBytesReceived) (total: sent=\(stats.sent), received=\(stats.received))")
         #endif
+    }
+
+    /// Get network statistics from the tunnel interface
+    private func getTunnelInterfaceStats() -> (received: UInt64, sent: UInt64)? {
+        var ifaddr: UnsafeMutablePointer<ifaddrs>?
+
+        guard getifaddrs(&ifaddr) == 0 else {
+            return nil
+        }
+
+        defer {
+            freeifaddrs(ifaddr)
+        }
+
+        var ptr = ifaddr
+        while ptr != nil {
+            defer { ptr = ptr?.pointee.ifa_next }
+
+            guard let interface = ptr?.pointee else { continue }
+
+            let name = String(cString: interface.ifa_name)
+
+            // OpenVPN typically uses utun interfaces
+            guard name.hasPrefix("utun") else { continue }
+
+            // Get interface data
+            if interface.ifa_addr.pointee.sa_family == UInt8(AF_LINK) {
+                let data = unsafeBitCast(interface.ifa_data, to: UnsafeMutablePointer<if_data>.self)
+
+                let received = UInt64(data.pointee.ifi_ibytes)
+                let sent = UInt64(data.pointee.ifi_obytes)
+
+                // Only return stats for an active interface with traffic
+                if received > 0 || sent > 0 {
+                    return (received: received, sent: sent)
+                }
+            }
+        }
+
+        return nil
     }
 
     /// Clear stats from shared UserDefaults
