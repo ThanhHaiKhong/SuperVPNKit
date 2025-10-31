@@ -127,20 +127,23 @@ public class OpenVPNProvider: VPNProvider {
     }
 
     public func getDataCount() -> (received: UInt64, sent: UInt64)? {
-        VPNLog.debug("📊 [OpenVPNProvider] getDataCount() called", category: VPNLog.openvpn)
-        VPNLog.debug("📊 [OpenVPNProvider] App group: \(appGroup)", category: VPNLog.openvpn)
+        print("📊 [OpenVPNProvider] getDataCount() called")
+        print("📊 [OpenVPNProvider] App group: \(appGroup)")
 
         // Read stats from shared UserDefaults (written by the extension)
         guard let sharedDefaults = UserDefaults(suiteName: appGroup) else {
-            VPNLog.error("❌ [OpenVPNProvider] Failed to create UserDefaults for app group: \(appGroup)", category: VPNLog.openvpn)
+            print("❌ [OpenVPNProvider] Failed to create UserDefaults for app group: \(appGroup)")
             return nil
         }
 
-        VPNLog.debug("✅ [OpenVPNProvider] Successfully created UserDefaults", category: VPNLog.openvpn)
+        print("✅ [OpenVPNProvider] Successfully created UserDefaults")
 
         // Dump all keys to see what's in there
-        let allKeys = sharedDefaults.dictionaryRepresentation().keys
-        VPNLog.debug("📊 [OpenVPNProvider] All keys in shared UserDefaults: \(allKeys)", category: VPNLog.openvpn)
+        let allKeys = sharedDefaults.dictionaryRepresentation().keys.sorted()
+        print("📊 [OpenVPNProvider] All keys in shared UserDefaults (\(allKeys.count) total):")
+        for key in allKeys {
+            print("  - \(key)")
+        }
 
         // Read directly from TunnelKit's data (bypass our intermediate timer)
         if let tunnelKitDataCount = sharedDefaults.array(forKey: "OpenVPN.DataCount") as? [UInt],
@@ -148,13 +151,20 @@ public class OpenVPNProvider: VPNProvider {
             let bytesReceived = UInt64(tunnelKitDataCount[0])
             let bytesSent = UInt64(tunnelKitDataCount[1])
 
-            VPNLog.debug("✅ [OpenVPNProvider] Reading DIRECTLY from TunnelKit: received=\(bytesReceived), sent=\(bytesSent)", category: VPNLog.openvpn)
+            print("✅ [OpenVPNProvider] Reading DIRECTLY from TunnelKit: received=\(bytesReceived), sent=\(bytesSent)")
 
             // Return data even if zero (to show connection is established)
             return (received: bytesReceived, sent: bytesSent)
         } else {
-            VPNLog.error("❌ [OpenVPNProvider] TunnelKit is NOT writing data to OpenVPN.DataCount", category: VPNLog.openvpn)
-            VPNLog.error("❌ [OpenVPNProvider] This means either: 1) Not connected yet, 2) dataCountInterval not set, 3) Session not started", category: VPNLog.openvpn)
+            print("❌ [OpenVPNProvider] TunnelKit is NOT writing data to OpenVPN.DataCount")
+
+            // Check if it exists but wrong type
+            if let rawValue = sharedDefaults.object(forKey: "OpenVPN.DataCount") {
+                print("⚠️ [OpenVPNProvider] Key exists but wrong type: \(type(of: rawValue))")
+            } else {
+                print("⚠️ [OpenVPNProvider] Key 'OpenVPN.DataCount' does not exist at all")
+            }
+
             return nil
         }
     }
