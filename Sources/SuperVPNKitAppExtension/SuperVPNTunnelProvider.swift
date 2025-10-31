@@ -11,7 +11,6 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
     private var appGroupIdentifier: String?
     private var initialBytesReceived: UInt64 = 0
     private var initialBytesSent: UInt64 = 0
-    private var tunnelInterfaceName: String?
 
     /// Initializes the tunnel provider
     public override init() {
@@ -78,10 +77,9 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
         // Clear stats from shared UserDefaults
         clearSharedStats()
 
-        // Reset initial byte counts and interface name
+        // Reset initial byte counts
         initialBytesReceived = 0
         initialBytesSent = 0
-        tunnelInterfaceName = nil
 
         // Call parent implementation
         super.stopTunnel(with: reason, completionHandler: completionHandler)
@@ -146,27 +144,24 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
             return
         }
 
-        // Identify the tunnel interface on first run
-        if tunnelInterfaceName == nil {
-            tunnelInterfaceName = getTunnelInterfaceName()
-            if tunnelInterfaceName == nil {
-                NSLog("⚠️ [SuperVPNTunnelProvider] Could not identify tunnel interface yet")
-                return
-            }
-        }
-
-        // Get data count from network interface statistics
-        guard let stats = getTunnelInterfaceStats() else {
+        // Get data count from TunnelKit's built-in data counting
+        // TunnelKit automatically writes dataCount to UserDefaults with key "OpenVPN.DataCount"
+        // as an array of [received, sent] UInt values
+        guard let dataCountArray = sharedDefaults.array(forKey: "OpenVPN.DataCount") as? [UInt],
+              dataCountArray.count == 2 else {
             #if DEBUG
-            NSLog("⚠️ [SuperVPNTunnelProvider] Unable to read network interface statistics")
+            NSLog("⚠️ [SuperVPNTunnelProvider] TunnelKit dataCount not available yet (tunnel may not be fully established)")
             #endif
             return
         }
 
+        let currentReceived = UInt64(dataCountArray[0])
+        let currentSent = UInt64(dataCountArray[1])
+
         // If this is the first update (initial stats are 0), capture the baseline
         if initialBytesReceived == 0 && initialBytesSent == 0 {
-            initialBytesReceived = stats.received
-            initialBytesSent = stats.sent
+            initialBytesReceived = currentReceived
+            initialBytesSent = currentSent
             NSLog("📊 [SuperVPNTunnelProvider] Baseline captured: sent=\(initialBytesSent), received=\(initialBytesReceived)")
 
             // Write zeros for the first update (since we just set the baseline)
@@ -178,8 +173,8 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
         }
 
         // Calculate session delta (current - initial)
-        let sessionBytesReceived = stats.received >= initialBytesReceived ? stats.received - initialBytesReceived : stats.received
-        let sessionBytesSent = stats.sent >= initialBytesSent ? stats.sent - initialBytesSent : stats.sent
+        let sessionBytesReceived = currentReceived >= initialBytesReceived ? currentReceived - initialBytesReceived : currentReceived
+        let sessionBytesSent = currentSent >= initialBytesSent ? currentSent - initialBytesSent : currentSent
 
         sharedDefaults.set(sessionBytesReceived, forKey: "vpn_bytes_received")
         sharedDefaults.set(sessionBytesSent, forKey: "vpn_bytes_sent")
@@ -187,104 +182,8 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
         sharedDefaults.synchronize()
 
         #if DEBUG
-        NSLog("📊 [SuperVPNTunnelProvider] Stats updated: sent=\(sessionBytesSent), received=\(sessionBytesReceived) (total: sent=\(stats.sent), received=\(stats.received), initial: sent=\(initialBytesSent), received=\(initialBytesReceived))")
+        NSLog("📊 [SuperVPNTunnelProvider] Stats updated: sent=\(sessionBytesSent), received=\(sessionBytesReceived) (total: sent=\(currentSent), received=\(currentReceived), initial: sent=\(initialBytesSent), received=\(initialBytesReceived))")
         #endif
-    }
-
-    /// Get the tunnel interface name by finding the newest/most recently active utun interface
-    private func getTunnelInterfaceName() -> String? {
-        var ifaddr: UnsafeMutablePointer<ifaddrs>?
-        guard getifaddrs(&ifaddr) == 0 else {
-            NSLog("⚠️ [SuperVPNTunnelProvider] getifaddrs failed")
-            return nil
-        }
-
-        defer {
-            freeifaddrs(ifaddr)
-        }
-
-        var ptr = ifaddr
-        var utunInterfaces: [(name: String, index: Int)] = []
-
-        while ptr != nil {
-            defer { ptr = ptr?.pointee.ifa_next }
-
-            guard let interface = ptr?.pointee else { continue }
-
-            let name = String(cString: interface.ifa_name)
-
-            // Look for utun interfaces
-            guard name.hasPrefix("utun") else { continue }
-
-            // Extract the interface number (e.g., "utun3" -> 3)
-            if let numberString = name.components(separatedBy: "utun").last,
-               let interfaceIndex = Int(numberString) {
-                utunInterfaces.append((name: name, index: interfaceIndex))
-                NSLog("🔍 [SuperVPNTunnelProvider] Found interface: \(name) (index: \(interfaceIndex))")
-            }
-        }
-
-        // Sort by index and take the highest (most recently created)
-        if let newestInterface = utunInterfaces.sorted(by: { $0.index > $1.index }).first {
-            NSLog("✅ [SuperVPNTunnelProvider] Identified tunnel interface: \(newestInterface.name) (highest index)")
-            return newestInterface.name
-        }
-
-        NSLog("⚠️ [SuperVPNTunnelProvider] No utun interfaces found")
-        return nil
-    }
-
-    /// Get network statistics from the tunnel interface
-    private func getTunnelInterfaceStats() -> (received: UInt64, sent: UInt64)? {
-        // Make sure we have identified the interface
-        guard let targetInterfaceName = tunnelInterfaceName else {
-            NSLog("⚠️ [SuperVPNTunnelProvider] Tunnel interface not yet identified")
-            return nil
-        }
-
-        var ifaddr: UnsafeMutablePointer<ifaddrs>?
-
-        guard getifaddrs(&ifaddr) == 0 else {
-            return nil
-        }
-
-        defer {
-            freeifaddrs(ifaddr)
-        }
-
-        #if DEBUG
-        NSLog("🔍 [SuperVPNTunnelProvider] Reading stats from interface: \(targetInterfaceName)")
-        #endif
-
-        var ptr = ifaddr
-
-        while ptr != nil {
-            defer { ptr = ptr?.pointee.ifa_next }
-
-            guard let interface = ptr?.pointee else { continue }
-
-            let name = String(cString: interface.ifa_name)
-
-            // Only read from our specific tunnel interface
-            guard name == targetInterfaceName else { continue }
-
-            // Get interface data
-            if interface.ifa_addr.pointee.sa_family == UInt8(AF_LINK) {
-                let data = unsafeBitCast(interface.ifa_data, to: UnsafeMutablePointer<if_data>.self)
-
-                let received = UInt64(data.pointee.ifi_ibytes)
-                let sent = UInt64(data.pointee.ifi_obytes)
-
-                #if DEBUG
-                NSLog("📊 [SuperVPNTunnelProvider] Interface \(name) stats: sent=\(sent), received=\(received)")
-                #endif
-
-                return (received: received, sent: sent)
-            }
-        }
-
-        NSLog("⚠️ [SuperVPNTunnelProvider] Could not find interface \(targetInterfaceName)")
-        return nil
     }
 
     /// Clear stats from shared UserDefaults
