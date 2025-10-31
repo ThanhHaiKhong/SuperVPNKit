@@ -1,6 +1,9 @@
 import NetworkExtension
 import TunnelKitOpenVPNAppExtension
 import TunnelKitCore
+import TunnelKitOpenVPNCore
+import TunnelKitOpenVPNManager
+import __TunnelKitUtils
 import Darwin
 
 /// Base class for SuperVPN tunnel provider
@@ -8,7 +11,7 @@ import Darwin
 open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
 
     private var statsUpdateTimer: DispatchSourceTimer?
-    private var appGroupIdentifier: String?
+    private var configuration: OpenVPN.ProviderConfiguration?
     private var initialBytesReceived: UInt64 = 0
     private var initialBytesSent: UInt64 = 0
 
@@ -46,12 +49,16 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
             VPNLogExtension.debug("Tunnel options: \(options)")
         }
 
-        // Extract app group identifier from protocol configuration
+        // Extract OpenVPN configuration from protocol configuration (same way parent does)
         if let protocolConfig = self.protocolConfiguration as? NETunnelProviderProtocol,
-           let providerConfig = protocolConfig.providerConfiguration,
-           let appGroup = providerConfig["appGroup"] as? String {
-            self.appGroupIdentifier = appGroup
-            NSLog("📱 [SuperVPNTunnelProvider] Using app group: \(appGroup)")
+           let providerConfig = protocolConfig.providerConfiguration {
+            do {
+                let cfg = try fromDictionary(OpenVPN.ProviderConfiguration.self, providerConfig)
+                self.configuration = cfg
+                NSLog("📱 [SuperVPNTunnelProvider] Extracted configuration with app group: \(cfg.appGroup)")
+            } catch {
+                NSLog("❌ [SuperVPNTunnelProvider] Failed to extract configuration: \(error)")
+            }
         }
 
         // Reset initial stats - they will be captured on first stats update
@@ -139,38 +146,33 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
 
     /// Update connection stats in shared UserDefaults
     private func updateSharedStats() {
-        guard let appGroup = appGroupIdentifier,
-              let sharedDefaults = UserDefaults(suiteName: appGroup) else {
-            NSLog("❌ [SuperVPNTunnelProvider] appGroup is nil or sharedDefaults failed to create")
+        guard let cfg = configuration else {
+            NSLog("❌ [SuperVPNTunnelProvider] Configuration not available")
             return
         }
 
-        NSLog("📊 [SuperVPNTunnelProvider] updateSharedStats - appGroup: \(appGroup)")
-
-        // Dump all keys in shared defaults to see what's available
-        #if DEBUG
-        let allKeys = sharedDefaults.dictionaryRepresentation().keys
-        NSLog("📊 [SuperVPNTunnelProvider] All keys in shared UserDefaults: \(allKeys)")
-        #endif
-
-        // Get data count from TunnelKit's built-in data counting
-        // TunnelKit automatically writes dataCount to UserDefaults with key "OpenVPN.DataCount"
-        // as an array of [received, sent] UInt values
-        guard let dataCountArray = sharedDefaults.array(forKey: "OpenVPN.DataCount") as? [UInt],
-              dataCountArray.count == 2 else {
-            NSLog("⚠️ [SuperVPNTunnelProvider] TunnelKit dataCount not available in shared UserDefaults")
-            NSLog("⚠️ [SuperVPNTunnelProvider] Trying to read from standard UserDefaults instead...")
-
-            // Try reading from standard UserDefaults (might be where TunnelKit writes)
-            if let standardDataCount = UserDefaults.standard.array(forKey: "OpenVPN.DataCount") as? [UInt],
-               standardDataCount.count == 2 {
-                NSLog("✅ [SuperVPNTunnelProvider] Found dataCount in standard UserDefaults: \(standardDataCount)")
-            }
+        guard let sharedDefaults = UserDefaults(suiteName: cfg.appGroup) else {
+            NSLog("❌ [SuperVPNTunnelProvider] Failed to create UserDefaults for app group: \(cfg.appGroup)")
             return
         }
 
-        let currentReceived = UInt64(dataCountArray[0])
-        let currentSent = UInt64(dataCountArray[1])
+        NSLog("📊 [SuperVPNTunnelProvider] updateSharedStats - appGroup: \(cfg.appGroup)")
+
+        // Read data count directly from TunnelKit's UserDefaults extension
+        // TunnelKit writes to "OpenVPN.DataCount" as [received, sent]
+        guard let dataCount = sharedDefaults.openVPNDataCount else {
+            #if DEBUG
+            NSLog("⚠️ [SuperVPNTunnelProvider] TunnelKit dataCount not available yet")
+
+            // Dump all keys for debugging
+            let allKeys = sharedDefaults.dictionaryRepresentation().keys
+            NSLog("📊 [SuperVPNTunnelProvider] Available keys: \(allKeys)")
+            #endif
+            return
+        }
+
+        let currentReceived = UInt64(dataCount.received)
+        let currentSent = UInt64(dataCount.sent)
 
         // If this is the first update (initial stats are 0), capture the baseline
         if initialBytesReceived == 0 && initialBytesSent == 0 {
@@ -202,8 +204,8 @@ open class SuperVPNTunnelProvider: OpenVPNTunnelProvider {
 
     /// Clear stats from shared UserDefaults
     private func clearSharedStats() {
-        guard let appGroup = appGroupIdentifier,
-              let sharedDefaults = UserDefaults(suiteName: appGroup) else {
+        guard let cfg = configuration,
+              let sharedDefaults = UserDefaults(suiteName: cfg.appGroup) else {
             return
         }
 
