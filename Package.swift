@@ -10,7 +10,6 @@ let package = Package(
     ],
     products: [
 		.singleTargetLibrary("SuperVPNKit"),
-		.singleTargetLibrary("SuperVPNKitAppExtension"),
     ],
     dependencies: [
 		.package(url: "https://github.com/ThanhHaiKhong/TunnelKit.git", branch: "master"),
@@ -22,12 +21,6 @@ let package = Package(
             dependencies: [
                 "VpnCoreKit",
                 .product(name: "TunnelKitOpenVPN", package: "TunnelKit")
-            ]
-        ),
-        .target(
-            name: "SuperVPNKitAppExtension",
-            dependencies: [
-                .product(name: "TunnelKitOpenVPNAppExtension", package: "TunnelKit")
             ]
         ),
         .testTarget(

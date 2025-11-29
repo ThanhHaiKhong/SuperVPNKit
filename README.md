@@ -33,6 +33,8 @@ Or add it locally in Xcode:
 2. Choose "Add Local..."
 3. Select the SuperVPNKit folder
 
+**Note:** If you need Network Extension support, also install the `SuperVPNKitAppExtension` package separately for your Network Extension target. See [SuperVPNKitAppExtension](../SuperVPNKitAppExtension/README.md) for details.
+
 ## Usage
 
 ### Basic Setup
@@ -180,6 +182,23 @@ The library includes extensions for:
 
 - VpnCoreKit - API and configuration models
 - TunnelKit - OpenVPN implementation
+
+## Package Structure
+
+SuperVPN is split into two packages:
+
+1. **SuperVPNKit** (this package) - Main app-side VPN management
+   - VPN manager and providers
+   - Protocol abstractions
+   - Helper functions
+   - SwiftUI/UIKit integration
+
+2. **SuperVPNKitAppExtension** - Network Extension components
+   - Tunnel provider implementation
+   - Stats tracking
+   - Extension-specific logging
+
+This separation ensures that Network Extension targets only include the minimal dependencies required for tunnel operation.
 
 ## Example
 
