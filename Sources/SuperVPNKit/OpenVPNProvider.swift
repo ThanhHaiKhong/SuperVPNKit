@@ -91,7 +91,7 @@ public class OpenVPNProvider: VPNProvider {
         }
 
         vpnManager.protocolConfiguration = protocolConfiguration
-        vpnManager.localizedDescription = "SuperVPN - OpenVPN"
+        vpnManager.localizedDescription = "LionVPN"
         vpnManager.isEnabled = true
 
         try await vpnManager.saveToPreferences()
